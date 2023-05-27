@@ -1,0 +1,461 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+$default-font-size: 1em;
+$zeros: 0px;
+
+$strong-cyan: hsl(172, 67%, 45%);
+
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan: hsl(186, 14%, 43%);
+$grayish-cyan: hsl(184, 14%, 56%);
+$light-grayish-cyan: hsl(185, 41%, 84%);
+$light-grayish-cyan-t: hsl(173, 61%, 77%);
+$very-light-grayish-cyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+
+$red-warning: rgba(211, 0, 0, 0.716);
+
+@mixin flexCenteredVH() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexCenteredV() {
+  display: flex;
+  justify-content: center;
+}
+@mixin thinBorder($input: black) {
+  border: 1px solid $input;
+}
+
+/* --------------------------- *\
+\* --------------------------- */
+
+* {
+  padding: $zeros;
+  margin: $zeros;
+}
+
+html {
+  font-family: "Space Mono", monospace;
+  font-size: 90%;
+}
+
+body {
+  @include flexCenteredVH();
+  flex-direction: column;
+  background-color: $light-grayish-cyan;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+body > * {
+  flex-grow: 1;
+  position: relative;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#zero {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+#zero.hide {
+  opacity: 0;
+}
+
+/* ------ *\
+- Logo
+\* ------ */
+#logo {
+  @include flexCenteredV();
+  max-height: 25vh;
+  align-items: flex-end;
+}
+#logo > img {
+  margin-bottom: 50px;
+  width: 80px;
+}
+
+/* ------ *\
+- Main
+\* ------ */
+main {
+  height: 50%;
+
+  @include flexCenteredV();
+}
+
+.input_icon {
+  position: relative;
+
+  display: flex;
+}
+.input_icon > div {
+  position: absolute;
+
+  left: 13px;
+  height: 100%;
+
+  @include flexCenteredVH();
+}
+.input_icon > input {
+  padding: 6px 13px;
+  border-radius: 6px;
+  flex-grow: 1;
+  border: 2px solid transparent;
+  text-align: right;
+  font-size: 1.2em;
+  color: $very-dark-cyan;
+  font-family: "Space Mono", monospace;
+
+  background-color: $very-light-grayish-cyan;
+
+  transition: 300ms;
+}
+.input_icon > input:focus {
+  outline: none !important;
+  border: 2px solid $strong-cyan;
+}
+.input_icon > input.warning {
+  outline: none !important;
+  border: 2px solid $red-warning;
+}
+
+/* ------ *\
+-- class="main-container"
+\* ------ */
+.main-container {
+  width: 55%;
+  height: 80%;
+
+  background-color: $white;
+  border-radius: 20px;
+
+  padding: 25px 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+.main-container > * {
+  flex-grow: 1;
+
+  margin: 5px 10px;
+  padding: 30px 30px;
+
+  border-radius: 20px;
+
+  box-sizing: border-box;
+}
+
+/* ------ *\
+--- id="bill"
+\* ------ */
+#bill {
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 47%;
+  max-width: 48%;
+}
+
+#bill label {
+  color: $dark-grayish-cyan;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+#total_bill {
+  display: flex;
+  flex-direction: column;
+}
+#total_bill > #total_bill_input {
+  text-align: right;
+}
+
+#tip_bill {
+  flex-grow: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labels {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.labels > .label {
+  color: $dark-grayish-cyan;
+}
+.labels > #zero {
+  color: $red-warning;
+}
+
+#select_tip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 40px;
+  gap: 10px;
+
+  margin: 5px 0px;
+}
+#select_tip > .tip_item {
+  background-color: $very-dark-cyan;
+  border-radius: 5px;
+  max-height: 40px;
+  border: 2px solid $very-dark-cyan;
+  font-size: 1.2em;
+
+  @include flexCenteredVH();
+
+  color: $white;
+  transition: 300ms;
+  cursor: pointer;
+}
+#select_tip > .tip_item:hover {
+  background-color: $light-grayish-cyan-t;
+  border-color: $light-grayish-cyan-t;
+  color: $very-dark-cyan;
+}
+#select_tip > .tip_item.active {
+  background-color: $strong-cyan;
+  border-color: $strong-cyan;
+  color: $very-dark-cyan;
+}
+
+#input_custom {
+  width: 100%;
+  height: 100%;
+  padding: 6px 13px;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: 300ms;
+
+  background-color: $very-light-grayish-cyan;
+  font-family: "Space Mono";
+  text-align: right;
+  font-size: 1.1em;
+  color: $very-dark-cyan;
+}
+#input_custom:focus {
+  outline: none !important;
+  border: 2px solid $strong-cyan;
+}
+
+/* ------ *\
+--- id="summary"
+\* ------ */
+#summary {
+  background-color: $very-dark-cyan;
+  min-width: 47%;
+  max-width: 48%;
+
+  display: flex;
+  flex-direction: column;
+}
+#summary_text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+#summary_text > * {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+}
+#summary_text .summary_title {
+  color: $white;
+  font-size: 1em;
+}
+#summary_text .summary_title > span {
+  color: $dark-grayish-cyan;
+  font-size: 0.9em;
+}
+#summary_text .summary_price {
+  color: $strong-cyan;
+  font-size: 2em;
+}
+#summary_button {
+  display: flex;
+  align-items: flex-end;
+
+  display: flex;
+}
+#summary_button > button {
+  flex-grow: 1;
+  border: none;
+  height: 40px;
+  border-radius: 5px;
+  background-color: $strong-cyan;
+  color: $very-dark-cyan;
+  font-family: "Space Mono";
+  text-transform: uppercase;
+
+  font-size: 1.2em;
+  transition: 300ms;
+  cursor: pointer;
+}
+#summary_button > button:hover {
+  background-color: $light-grayish-cyan-t;
+}
+#summary_button > button:disabled {
+  cursor: not-allowed;
+  opacity: .2;
+}
+#summary_button > button:disabled:hover {
+  background-color: $strong-cyan;
+}
+
+/* ------ *\
+- Footer
+\* ------ */
+.attribution {
+  flex-grow: 0;
+
+  font-size: $default-font-size;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 1430px) and (min-height: 1000px) {
+  html {
+    font-size: 110%;
+  }
+  #logo {
+    max-height: 30vh;
+  }
+  #logo > img {
+    margin-bottom: 80px;
+  }
+  main {
+    height: 35%;
+  }
+  .main-container {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 900px) {
+  .main-container {
+    flex-direction: column;
+    height: max-content;
+    padding-bottom: 20px;
+  }
+  #bill {
+    max-width: none;
+    padding: 15px 10px;
+  }
+  #summary {
+    max-width: none;
+  }
+  .attribution {
+    position: fixed;
+    bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 240px) and (max-width: 480px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .input_icon > input {
+    font-size: 1.5em;
+  }
+
+  #logo {
+    max-height: 16%;
+  }
+
+  #logo > img {
+    width: 90px;
+    margin-bottom: 40px;
+  }
+
+  .main-container {
+    width: 100%;
+    height: max-content;
+
+    border-radius: 25px;
+    border-bottom-left-radius: $zeros;
+    border-bottom-right-radius: $zeros;
+
+    margin: $zeros;
+
+    flex-direction: column;
+  }
+
+  #bill {
+    max-width: none;
+    padding: 5px 10px 20px 10px;
+  }
+
+  #bill label {
+    font-size: 1em;
+  }
+
+  #bill > * {
+    margin: 10px 0px;
+  }
+
+  #select_tip {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 50px;
+    gap: 15px;
+    margin: 10px 0px 5px 0px;
+  }
+
+  #select_tip > .tip_item {
+    max-height: none;
+    font-size: 1.5em;
+  }
+
+  .labels > * {
+    font-size: 1em;
+  }
+
+  #summary {
+    max-width: none;
+
+    margin-bottom: 30px;
+  }
+
+  #summary_text > * {
+    margin: 15px 0px;
+  }
+
+  #summary_button {
+    margin-top: 15px;
+  }
+
+  .attribution {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    position: fixed;
+    bottom: 0px;
+
+    font-size: 0.8em;
+
+    background-color: $very-dark-cyan;
+    color: $white;
+  }
+  .attribution a {
+    color: $strong-cyan;
+  }
+}

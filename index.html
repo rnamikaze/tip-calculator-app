@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="./style/styles.css" />
+  </head>
+
+  <body>
+    <div id="logo">
+      <img src="./images/logo.svg" alt="Splitter Logo" />
+    </div>
+    <main id="main">
+      <div class="main-container">
+        <div id="bill">
+          <div id="total_bill">
+            <label for="total_bill_input">Bill</label>
+            <div class="input_icon">
+              <div>
+                <img src="./images/icon-dollar.svg" alt="icon dollar" />
+              </div>
+              <input
+                type="text"
+                id="total_bill_input"
+                placeholder="0"
+                maxlength="8"
+              />
+            </div>
+          </div>
+
+          <div id="tip_bill">
+            <label>Select Tip %</label>
+            <div id="select_tip">
+              <div class="tip_item">5%</div>
+              <div class="tip_item">10%</div>
+              <div class="tip_item">15%</div>
+              <div class="tip_item">25%</div>
+              <div class="tip_item">50%</div>
+              <div class="tip_item" style="border: 0px">
+                <input type="text" id="input_custom" placeholder="Custom" />
+              </div>
+            </div>
+          </div>
+
+          <div id="total_people">
+            <div class="labels">
+              <div class="label">Number of People</div>
+              <div id="zero" class="hide">Can't be zero</div>
+            </div>
+            <div class="input_icon">
+              <div>
+                <img src="./images/icon-person.svg" alt="icon people" />
+              </div>
+              <input
+                type="text"
+                id="total_people_input"
+                placeholder="0"
+                maxlength="3"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div id="summary">
+          <div id="summary_text">
+            <div>
+              <div class="summary_title">
+                Tip Amount <br />
+                <span>/ person</span>
+              </div>
+              <div class="summary_price">$0.00</div>
+            </div>
+            <div>
+              <div class="summary_title">
+                Total <br />
+                <span>/ person</span>
+              </div>
+              <div class="summary_price">$0.00</div>
+            </div>
+          </div>
+
+          <div id="summary_button">
+            <button id="reset" class="button">Reset</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://instagram.com/yusufbagus_s" target="_blank"
+        >Ryuzen Namikaze</a
+      >.
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
